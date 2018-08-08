@@ -1,0 +1,13 @@
+<div class="container">
+    {{if empty($feed)}}
+        <p style="color: red;">No Record Found !</p>
+    {{/if}}
+    {{else}}
+        <h3>{$feed->title}</h3>
+        <p>{$feed->description}</p>
+        <form action="/feed/feedDelete" method="POST">
+            <input type="hidden" style="display: none;" name="id" value="{$feed->id}">
+            <button type="submit" class="btn btn-danger" style="border-radius: 30px;"> Delete</button>
+        </form>
+    {{/else}}
+</div>

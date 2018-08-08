@@ -6,25 +6,25 @@
  * @author Faizan Ayubi, Hemant Mann
  */
 use Framework\Controller as Controller;
+use \Models\UserFeed as UserFeed;
+class Home extends Auth {
 
-class Home extends Controller {
-
-    public function index() {
-    	$layoutView = $this->getLayoutView();
-    	$layoutView->set("seo", Framework\Registry::get("seo"));
-
-        $view = $this->getActionView(); // Gets the property _actionView
-        $view->set('ip', $this->request->getIp());
-        $view->set('headers', $this->request->headerBag()->all());
+    public function __construct($options = array()) {
+        parent::__construct($options);
+       $this->setLayout('/layouts/standard');
     }
 
-    public function post() {
-    	$view = $this->getActionView();	// Gets the property _actionView
-    	if ($this->request->isPost()) {
-    		$view->set('message', 'POST request!!');
-    	} else {
-    		$view->set('message', 'request is not post!!');
-    	}
+     /**
+     * @before _checkUserLogin
+     */
+    public function index() {
+    	$layoutView = $this->getLayoutView();
+        $view = $this->getActionView(); // Gets the property _actionView
+        $view->set('ip', $this->request->getIp());
+		$view->set('headers', $this->request->headerBag()->all());
+		$layoutView->set('page_title','Home Page :-)');
+        $allfeeds = UserFeed::all();
+        $view->set('allfeeds',$allfeeds);
     }
 
 }

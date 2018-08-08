@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>Post your feed</h2>
+            {{if $saved}}
+            <p style="color: green;">Submited Sucessfully</p>
+            {{/if}}
+            {{else}}
+                <form class="row" method="POST" action='/feed'>
+                            <div class="col-md-12" style="margin-bottom: 10px;">
+                                <p style="margin: 0">Title</p>
+                                <div class="input-group">
+                                    <input id="post_title" type="text" class="form-control" name="post_title" placeholder="Title">
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin-bottom: 10px;">
+                                <p style="margin: 0">Description </p>
+                                <div class="input-group">
+                                    <textarea class="form-control" rows="5" id="post_desc" name="post_desc"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12" style="margin: 10px 0;">
+                                    <div class="input-group">
+                                        <button id="post_submit" type="text" class="form-control btn btn-info" name="post_submit">Post</button>
+                                    </div>
+                            </div>
+                            {{if $isError}}
+                                <p style="font-size: 12px; color: red">Please Enter valid Details</p> 
+                            {{/if}}
+
+                </form>
+            {{/else}}
+        </div>
+        <div class="col-md-4">
+            <h2>All feeds</h2>
+            {{if empty($user_feeds)}}
+                <p style="color: red;">No Record Found !</p>
+            {{/if}}
+            {{else}}
+                <div style="height: 400px; overflow-y: scroll;background-color: #f3f3f3;padding: 15px;">
+                    {{foreach $feed in $user_feeds}}
+                        <div class='card card-1' style="padding: 10px;margin-bottom: 15px;width: 100%;">
+                            <h3 style="font-size: 20px;">{$feed->title}</h3>
+                            <p style="margin: 5px;font-size: 16px;">{{echo substr($feed->description,0,80)}}..</p>
+                            <div style="display: flex;">
+                                <a class="form-control btn btn-info" href='/feed/edit?id={$feed->id}' style="margin:0 5px;border-radius: 30px;">Edit</a>
+                                <a class="form-control btn btn-danger" style="margin:0 5px;border-radius: 30px;" href='/feed/show?id={$feed->id}'>show</a>
+                            </div>
+                        </div>
+                    {{/foreach}}
+                </div
+            {{/else}}
+        </div>
+    </div>
+</div>

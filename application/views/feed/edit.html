@@ -1,0 +1,36 @@
+<div class="container">
+    <div class="row">
+        <h2>Post your feed</h2>
+    </div>
+    {{if $no_record}}
+        <p style="color: red;">No Record Found!!</p>
+    {{/if}}
+    {{else}}
+        <form class="row" method="POST" action='/feed/edit'>
+                    <div class="col-md-8" style="margin-bottom: 10px;">
+                        <p style="margin: 0">Title</p>
+                        <div class="input-group">
+                            <input id="post_title" type="text" class="form-control" name="post_title" placeholder="Title" value="{$title}">
+                        </div>
+                    </div>
+                    <div class="col-md-8" style="margin-bottom: 10px;">
+                        <p style="margin: 0">Description </p>
+                        <div class="input-group">
+                            <textarea class="form-control" rows="5" id="post_desc" name="post_desc" >{$description}</textarea>
+                        </div>
+                    </div>
+                    <div class="col-md-5" style="margin: 10px 0;border-radius: 30px;">
+                            <div class="input-group" style="border-radius: 30px;">
+                                <button id="post_submit" style="border-radius: 30px;" type="text" class="form-control btn btn-info" name="post_submit" placeholder="Additional Info" >Post</button>
+                            </div>
+                    </div>
+                    {{if $isError}}
+                        <p style="font-size: 12px; color: red">Please Enter valid Details</p> 
+                    {{/if}}
+                    <input type="hidden" style="display: none;" name="id" value="{$id}">
+
+        </form>
+    {{/else}}
+</div>
+
+<!-- <script src='./assets/js/feed.js'></script> -->

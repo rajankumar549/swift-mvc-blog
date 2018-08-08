@@ -311,7 +311,6 @@ namespace Framework\Database {
             if ($offset) {
                 $this->_offset = $offset;
             }
-
             return $first;
         }
 

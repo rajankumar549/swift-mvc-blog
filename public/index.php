@@ -16,7 +16,11 @@ try {
 
     // 2. Additional Path's which
     Framework\Core::autoLoadPaths([
-        "/application/libraries"
+            "/application/libraries",
+            "/application/controllers",
+            "/application/models",
+            "/application",
+            ""
     ]);
 
     // plugins

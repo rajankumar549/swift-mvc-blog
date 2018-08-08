@@ -75,11 +75,12 @@ namespace Framework {
                 return false;
             }
             spl_autoload_register(function ($classname) use ($root, $paths) {
+                //var_dump($paths);
                 $scriptPath = str_replace("\\", DIRECTORY_SEPARATOR, $classname);
                 foreach ($paths as $p) {
                     $file = $root . $p . DIRECTORY_SEPARATOR . "{$scriptPath}.php";
-
                     if (file_exists($file)) {
+                        //var_dump($file);
                         require_once $file;
                         return true;
                     }

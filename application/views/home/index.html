@@ -1,14 +1,31 @@
 <div class="container">
-    <div class="starter-template">
-        <h1>SwiftMVC PHP Framework</h1>
-        <p class="lead">SwiftMVC is a light but powerful PHP Framework for building web API based applications.
-            <br> Higly Scalable with Caching and NoSQL Support.</p>
-
-        <p>
-        	<blockquote>
-        		Your IP: {{echo $ip}} <br>
-        		Request Headers: {{echo json_encode($headers)}}
-        	</blockquote>
-        </p>
-    </div>
-</div>
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            {{if empty($allfeeds)}}
+             <p style="color:red;font-size: 12px;"> No Record Found</p>
+            {{/if}}
+            {{else}}
+              {{foreach $feed in $allfeeds}}
+                <div class="post-preview">
+                  <a href="#">
+                    <h2 class="post-title">
+                      {$feed->title}
+                    </h2>
+                    <h3 class="post-subtitle">
+                      {$feed->description}
+                    </h3>
+                  </a>
+                  <p class="post-meta">Posted by
+                    <a href="#">Blog.io</a>
+                    on {$feed->modified}</p>
+                </div>
+                <hr/>
+              {{/foreach}}
+            {{/else}}
+            <!-- Pager -->
+            <!-- <div class="clearfix">
+              <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+            </div> -->
+          </div>
+        </div>
+      </div>

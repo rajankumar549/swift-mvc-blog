@@ -12,6 +12,16 @@ $routes = array(
         "pattern" => "home",
         "controller" => "home",
         "action" => "index"
+    ),
+    array(
+        "pattern"=>"feed",
+        "controller" => "feed",
+        "action" => "index"
+    ),
+    array(
+        "pattern"=>"creatUser",
+        "controller" => "auth",
+        "action" => "creatUser"
     )
 );
 

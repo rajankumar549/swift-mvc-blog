@@ -1,0 +1,22 @@
+
+<div class='container' style="margin: auto;margin-top: 66px;">
+    <div class="row" style='padding: 20px;'>
+        <div class="col-md-3" style="margin: auto;">
+            <form class="form-login" method="POST" action="/auth">
+                <h4>Welcome back.</h4>
+                <input type="email" id="email" name='email' class="form-control input-sm chat-input" placeholder="email" required />
+                </br>
+                <input type="password" id="password" name='password' class="form-control input-sm chat-input" placeholder="password" required />
+                </br>
+                <div class="wrapper">
+                <span class="group-btn">     
+                    <button type="submit" href="#" class="btn btn-primary btn-md">login <i class="fa fa-sign-in"></i></button>
+                </span>
+            </form>
+            {{if $isError}}
+                <p style="color:red;font-size: 12"> Invalid Details, Please Try again</p>
+            {{/if}}
+            </div>
+        </div>
+    </div>
+</div>

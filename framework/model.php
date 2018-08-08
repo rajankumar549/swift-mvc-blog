@@ -121,7 +121,7 @@ namespace Framework {
                     $data[$key] = $this->$method();
                     continue;
                 }
-            } $result = $query->save($data);
+            }$result = $query->save($data);
             if ($result > 0) {
                 $this->$raw = $result;
             } return $result;
@@ -180,6 +180,7 @@ namespace Framework {
          * @return \Framework\class
          */
         protected function _all($where = array(), $fields = array("*"), $order = null, $direction = null, $limit = null, $page = null) {
+            //var_dump($this->connector);
             $query = $this->connector->query()->from($this->table, $fields);
             foreach ($where as $clause => $value) {
                 $query->where($clause, $value);

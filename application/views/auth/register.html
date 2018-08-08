@@ -1,0 +1,32 @@
+
+<div class='container' style="margin: auto;margin-top: 66px;">
+    <div class="row" style='padding: 20px;'>
+    	{{if $saved}}
+    		<h3> Sign Up done</h3>
+    		<p><a href="/">Click for login</a><p>
+    	{{/if}}
+    	{{else}}
+	        <div class="col-md-3" style="margin: auto;">
+	            <form class="form-login" method="POST" action="/auth/register">
+		            <h4>Register Here</h4>
+		            <input type="text" name="name" id="name" class="form-control input-sm chat-input" placeholder="Name" value="{$_username}" required="" />
+		            </br>
+		            <input type="email" name='email' id="email" class="form-control input-sm chat-input" placeholder="email" value="{$_email}" required="" />
+		            </br>
+		            <input type="password" name='password' id="password" required="" class="form-control input-sm chat-input" placeholder="password" value="{$_password}" />
+		            </br>
+		            <div class="wrapper">
+			            <span class="group-btn">     
+			                <button class="btn btn-primary btn-md">Submit</button>
+			            </span>
+		            </div>
+
+		            {{if $isError}}
+		            	<p style="color:red;font-size:12px;"> Email Id already Exist in system.</p>
+		           	{{/if}}
+
+	            </form>
+	        </div>
+	    {{/else}}
+    </div>
+</div>

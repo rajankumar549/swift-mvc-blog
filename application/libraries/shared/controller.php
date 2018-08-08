@@ -61,6 +61,7 @@ class Controller extends \Framework\Controller {
         // connect to database
         $database = Registry::get("database");
         $database->connect();
+        //var_dump("*****************************************");
 
         // schedule: load user from session           
         Events::add("framework.router.beforehooks.before", function($name, $parameters) {
